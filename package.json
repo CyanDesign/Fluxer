@@ -1,0 +1,22 @@
+{
+  "name": "cyan-fluxer",
+  "version": "0.1.0",
+  "description": "Powerful UX, stunning visuals, like never before",
+  "keywords": [],
+  "scripts": {
+    "build": "postcss --sourcemap=none --config ./postcss.config.js -o import.css ./src/index.css",
+    "build:watch": "postcss --sourcemap=none --config ./postcss.config.js -o import.css ./src/index.css --watch --verbose"
+  },
+  "author": "DaBluLite",
+  "license": "MIT",
+  "packageManager": "pnpm@10.32.1",
+  "dependencies": {
+    "@cyandesign/core": "github:CyanDesign/Core",
+    "@tailwindcss/postcss": "^4.2.2",
+    "postcss": "^8.5.8",
+    "postcss-cli": "^11.0.1",
+    "postcss-load-config": "^6.0.1",
+    "sass": "^1.98.0",
+    "tailwindcss": "^4.2.2"
+  }
+}

@@ -1,0 +1,193 @@
+@custom-variant dark (&:where(.theme-dark, .theme-dark *, .theme-dark .theme-light, .theme-dark .theme-light *));
+@custom-variant black (&:where(.theme-coal, .theme-coal *));
+@import "@cyandesign/core/utilities.css" prefix(cyan);
+@import "@cyandesign/core/theme.css" prefix(cyan);
+@import "tailwindcss" prefix(cyan);
+
+:root {
+    --cyan-interface-shadow: 0 4px 10px 0 rgb(0 0 0 / 40%);
+    --cyan-font: "Montserrat", "Open Sans";
+    --cyan-background-img: url("https://fluxerusercontent.com/attachments/1483026539442815353/1486448635274494737/image.png");
+    --cyan-accent-color: #009f88;
+    --cyan-blur: 16px;
+    --cyan-radius-round-interface: 50px;
+    --cyan-radius-interface: 24px;
+    --cyan-radius-xl: 20px;
+    --cyan-radius-large: 16px;
+    --cyan-radius-medium: 12px;
+    --cyan-radius-small: 8px;
+    --cyan-radius-xs: 4px;
+    --cyan-loading-header: "Getting up to speed...";
+}
+
+.theme-dark,
+.theme-dark .theme-light {
+    @apply cyan:use-dark-vars;
+}
+
+.theme-light {
+    @apply cyan:use-light-vars;
+}
+
+.theme-coal,
+.theme-coal .theme-light {
+    @apply cyan:use-black-vars;
+}
+
+:root {
+    --layout-user-area-height: calc(56px + var(--cyan-spacing) * 4);
+    --background-primary: var(--cyan-background-primary);
+    --brand-primary: var(--cyan-accent-color);
+    --layout-sidebar-width: 303px;
+}
+
+[class*="GuildsLayout.module__guildListScrollerWrapper"] {
+    height: calc(
+        100% -
+            (
+                var(--layout-user-area-height) +
+                    var(--layout-voice-connection-height, 0px)
+            )
+    ) !important;
+}
+
+[class*="UserArea.module__userAreaInnerWrapper"] {
+    width: calc(100% - 8px);
+    @apply cyan:rounded-large! cyan:border-none! cyan:use-blur! cyan:shadow-cyan! cyan:bgp-first-layer! cyan:p-1! cyan:flex! cyan:flex-col! cyan:gap-1! cyan:absolute! cyan:left-2! cyan:bottom-2!;
+}
+
+[class*="UserArea.module__separator"] {
+    @apply cyan:hidden!;
+}
+
+[class*="UserArea.module__userAreaContainer"] {
+    @apply cyan:p-0! cyan:min-h-0! cyan:gap-1!;
+}
+
+[class*="UserArea.module__controlButton"] {
+    @apply cyan:m-0! cyan:w-full! cyan:h-12! cyan:rounded-medium! cyan:transition! cyan:duration-200! cyan:border! cyan:border-transparent!;
+}
+
+[class*="UserArea.module__controlsContainer"] {
+    @apply cyan:contents!;
+}
+
+[class*="UserArea.module__controlsContainer"] > div:not([class]) {
+    @apply cyan:w-full! cyan:h-12!;
+}
+
+[class*="UserArea.module__userInfo"] {
+    @apply cyan:w-full! cyan:justify-center! cyan:h-12! cyan:rounded-medium! cyan:transition! cyan:duration-200! cyan:border! cyan:border-transparent! cyan:min-w-[unset]! cyan:flex-[unset]!;
+}
+
+[class*="UserArea.module__userInfoText"] {
+    @apply cyan:hidden!;
+}
+
+[class*="UserArea.module__userInfo"]::before {
+    content: none !important;
+}
+
+[class*="UserArea.module__userInfo"]:hover,
+[class*="UserArea.module__controlButton"]:hover {
+    @apply cyan:border-faint! cyan:bg-second-layer-thin!;
+}
+
+[class*="DMLayout.module__contentColumn"],
+[class*="GuildLayout.module__guildMainContent"] {
+    @apply cyan:border-none! cyan:mr-2! cyan:mb-2! cyan:shadow-cyan! cyan:mt-2! cyan:bgp-first-layer! cyan:rounded-interface! cyan:use-blur! cyan:h-[calc(100%-1rem)]! cyan:overflow-visible!;
+}
+
+[class*="DMLayout.module__dmLayoutContainer"],
+[class*="GuildLayout.module__guildLayoutContent"] {
+    @apply cyan:flex!;
+}
+
+[class*="DMLayout.module__dmListColumn"] {
+    @apply cyan:contents!;
+}
+
+[class*="GuildNavbar.module__guildNavbarContainer"] {
+    @apply cyan:shrink-0!;
+}
+
+[class*="DMList.module__dmListContainer"],
+[class*="GuildNavbar.module__guildNavbarContainer"] {
+    margin-bottom: calc(
+        var(--layout-user-area-height) +
+            var(--layout-voice-connection-height, 0px)
+    ) !important;
+    max-height: calc(
+        100% - var(--layout-user-area-height) +
+            var(--layout-voice-connection-height, 0px) -
+            (var(--cyan-spacing) * 2)
+    ) !important;
+    @apply cyan:mt-2! cyan:border-none! cyan:bgp-first-layer! cyan:rounded-xl! cyan:mr-2! cyan:use-blur! cyan:shadow-cyan! cyan:min-w-(--layout-sidebar-width)!;
+}
+
+[class*="DMFriendsView.module__container"],
+[class*="ActiveNowSidebar.module__sidebar"],
+[class*="GuildsLayout.module__guildsLayoutContainer"],
+[class*="GuildsLayout.module__contentContainer"],
+[class*="DMLayout.module__dmLayoutContainer"],
+[class*="GuildsLayout.module__contentInner"],
+[class*="GuildsLayout.module__outlineFrame"],
+[class*="DMLayout.module__contentInner"],
+[class*="DMList.module__desktopScroller"],
+[class*="ChannelHeader.module__headerWrapper"],
+[class*="ChannelIndexPage.module__channelGrid"],
+[class*="ChannelChatLayout.module__container"],
+[class*="InputWrapper.module__box"],
+[class*="ChannelChatLayout.module__textareaArea"],
+[class*="GuildsLayout.module__guildListScrollerWrapper"],
+[class*="GuildLayout.module__guildLayoutContent"],
+[class*="GuildLayout.module__guildLayoutContainer"],
+[class*="ChannelLayout.module__channelLayoutContainer"],
+[class*="ChannelListContent.module__channelListScroller"],
+[class*="MemberListContainer.module__memberListScroller"],
+[class*="OutlineFrame.module__frame"],
+[class*="MemberListContainer.module__memberListContainer"],
+[class*="SettingsModalLayout.module__desktopContent_"],
+[class*="SettingsModalLayout.module__desktopHeader_"] {
+    @apply cyan:no-bg! cyan:border-0!;
+}
+
+[class*="DMList.module__dmListHeader"] {
+    @apply cyan:no-bg! cyan:pl-2! cyan:pr-2! cyan:border-none!;
+}
+
+[class*="DMList.module__dmListHeaderButton"] {
+    @apply cyan:rounded-medium! cyan:p-1! cyan:px-3! cyan:use-transition! cyan:border! cyan:border-faint! cyan:bg-second-layer-thin! cyan:max-h-[unset]! cyan:h-fit! cyan:items-center! cyan:shadow-glass!;
+}
+
+[class*="ChannelHeader.module__headerContainer"] {
+    @apply cyan:bgp-second-layer-thin! cyan:m-2! cyan:rounded-large! cyan:w-[calc(100%-1rem)]! cyan:border! cyan:border-faint! cyan:pr-1! cyan:shadow-glass!;
+}
+
+[class*="DMFriendsView.module__mainColumn"],
+[class*="ChannelIndexPage.module__channelGrid"] {
+    grid-template-rows: 72px 1fr !important;
+}
+
+[class*="GuildsLayout.module__guildListScrollContainer"] {
+    @apply cyan:no-bg! cyan:mt-2!;
+}
+
+[class*="GuildsLayout.module__guildsLayoutContainer"]::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    filter: brightness(min(max(var(--cyan-bg-brightness), 0), 1));
+    @apply cyan:use-wallpaper!;
+}
+
+[class*="Modal.module__root_"] {
+    @apply cyan:raised-interface-large! cyan:use-blur! cyan:overflow-visible! cyan:rounded-interface!;
+}
+
+[class*="SettingsModalLayout.module__desktopSidebar_"] {
+    @apply cyan:raised-interface! cyan:m-2! cyan:rounded-large!;
+}
