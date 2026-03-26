@@ -38,6 +38,12 @@
     --layout-user-area-height: calc(56px + var(--cyan-spacing) * 4);
     --background-primary: var(--cyan-background-primary);
     --brand-primary: var(--cyan-accent-color);
+    --brand-secondary: color-mix(in srgb, var(--cyan-accent-color), black 8%);
+    --brand-primary-light: color-mix(
+        in srgb,
+        var(--cyan-accent-color),
+        white 48%
+    );
     --layout-sidebar-width: 303px;
 }
 
@@ -148,8 +154,15 @@
 [class*="OutlineFrame.module__frame"],
 [class*="MemberListContainer.module__memberListContainer"],
 [class*="SettingsModalLayout.module__desktopContent_"],
-[class*="SettingsModalLayout.module__desktopHeader_"] {
+[class*="SettingsModalLayout.module__desktopHeader_"],
+[class*="GuildHeader.module__headerContainer_"],
+[class*="DMList.module__dmChannelList_"],
+[class*="Modal.module__header_"] {
     @apply cyan:no-bg! cyan:border-0!;
+}
+
+[class*="DMList.module__clickableItemIcon_"] {
+    @apply cyan:w-5! cyan:h-5! cyan:no-bg!;
 }
 
 [class*="DMList.module__dmListHeader"] {
@@ -161,12 +174,12 @@
 }
 
 [class*="ChannelHeader.module__headerContainer"] {
-    @apply cyan:bgp-second-layer-thin! cyan:m-2! cyan:rounded-large! cyan:w-[calc(100%-1rem)]! cyan:border! cyan:border-faint! cyan:pr-1! cyan:shadow-glass!;
+    @apply cyan:bgp-second-layer-thin! cyan:m-2! cyan:pt-2! cyan:pb-2! cyan:pr-1.5! cyan:h-fit! cyan:rounded-large! cyan:w-[calc(100%-1rem)]! cyan:border! cyan:border-faint! cyan:pr-1! cyan:shadow-glass!;
 }
 
 [class*="DMFriendsView.module__mainColumn"],
 [class*="ChannelIndexPage.module__channelGrid"] {
-    grid-template-rows: 72px 1fr !important;
+    @apply cyan:flex! cyan:flex-col!;
 }
 
 [class*="GuildsLayout.module__guildListScrollContainer"] {
@@ -190,4 +203,84 @@
 
 [class*="SettingsModalLayout.module__desktopSidebar_"] {
     @apply cyan:raised-interface! cyan:m-2! cyan:rounded-large!;
+}
+
+[class*="NativeTitlebar.module__left_"] {
+    @apply cyan:hidden!;
+}
+
+[class*="ChannelHeader.module__iconButton_"],
+[class*="NativeTitlebar.module__controlButton_"] {
+    @apply cyan:invis-btn! cyan:rounded-medium! cyan:w-10! cyan:h-10! cyan:region-no-drag!;
+}
+
+html.platform-native:not(.platform-macos)
+    [class*="ChannelHeader.module__headerRightSection_"] {
+    padding-right: 9rem;
+}
+
+html.platform-native:not(.platform-macos)
+    [class*="DMFriendsView.module__container_"]
+    [class*="ChannelHeader.module__headerRightSection_"] {
+    padding-right: 0 !important;
+}
+
+[class*="NativeTitlebar.module__controls_"] {
+    @apply cyan:fixed! cyan:top-6! cyan:right-6! cyan:z-1000!;
+}
+
+html.platform-native:not(.platform-macos)
+    [class*="GuildsLayout.module__guildsLayoutContainer_"] {
+    padding-top: 0 !important;
+}
+
+[class*="NativeTitlebar.module__titlebar_"] {
+    @apply cyan:contents!;
+}
+
+[class*="ChannelHeader.module__headerLeftSection_"],
+[class*="ChannelHeader.module__headerRightSection_"] {
+    @apply cyan:region-no-drag!;
+}
+
+html.platform-native:not(.platform-macos)
+    [class*="ChannelHeader.module__headerContainer"] {
+    @apply cyan:region-drag!;
+}
+
+[class*="GuildNavbar.module__guildNavbarContainer_"],
+[class*="OutlineFrame.module__frame_"],
+[class*="OutlineFrame.module__body_"] {
+    overflow: visible !important;
+    flex: 1 !important;
+}
+
+[class*="ChannelIndexPage.module__contentGrid_"] {
+    @apply cyan:flex!;
+}
+
+[class*="ChannelChatLayout.module__container"] {
+    @apply cyan:w-full!;
+}
+
+[class*="OutlineFrame.module__frame_ OutlineFrame.module__frameHideTop_"] {
+    @apply cyan:w-fit!;
+}
+
+[class*="GuildHeader.module__headerWrapper_"] {
+    @apply cyan:rounded-t-large! cyan:invis-btn! cyan:overflow-hidden!;
+}
+
+[class*="Input.module__input_"],
+[class*="MessageSearchBar.module__inputContainer_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium!;
+}
+
+[class*="GuildsLayout.module__guildIcon_"],
+[class*="GuildsLayout.module__addGuildButtonIcon_"] {
+    @apply cyan:shadow-cyan! cyan:bg-second-layer! cyan:use-blur! cyan:rounded-full! cyan:border-0!;
+}
+
+[class*="GuildsLayout.module__guildIndicatorBar_"] {
+    @apply cyan:bg-first-layer!;
 }
