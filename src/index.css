@@ -45,6 +45,10 @@
         white 48%
     );
     --layout-sidebar-width: 303px;
+
+    --cyan-version: 26;
+    --cyan-subversion: 3;
+    --cyan-patch-version: 26;
 }
 
 [class*="GuildsLayout.module__guildListScrollerWrapper"] {
@@ -154,10 +158,14 @@
 [class*="OutlineFrame.module__frame"],
 [class*="MemberListContainer.module__memberListContainer"],
 [class*="SettingsModalLayout.module__desktopContent_"],
-[class*="SettingsModalLayout.module__desktopHeader_"],
 [class*="GuildHeader.module__headerContainer_"],
 [class*="DMList.module__dmChannelList_"],
-[class*="Modal.module__header_"] {
+[class*="Modal.module__header_"],
+[class*="SettingsModalLayout.module__desktopContentCard_"],
+[class*="AppearanceTab.module__previewWrapper_"],
+[class*="MessageReactionsModal.module__modalLayout_"],
+[class*="MessageReactionsModal.module__sidebar_"],
+[class*="MessageReactionsModal.module__reactionListContainer_"] {
     @apply cyan:no-bg! cyan:border-0!;
 }
 
@@ -268,19 +276,301 @@ html.platform-native:not(.platform-macos)
 }
 
 [class*="GuildHeader.module__headerWrapper_"] {
-    @apply cyan:rounded-t-large! cyan:invis-btn! cyan:overflow-hidden!;
+    @apply cyan:rounded-t-large! cyan:invis-btn! cyan:overflow-hidden! cyan:border-0!;
 }
 
 [class*="Input.module__input_"],
-[class*="MessageSearchBar.module__inputContainer_"] {
+[class*="MessageSearchBar.module__inputContainer_"],
+[class*="ColorPickerField.module__inputWrapper_"] {
     @apply cyan:raised-interface! cyan:rounded-medium!;
 }
+
+/*[class*="ColorPickerField.module__input_"] {
+    @apply cyan:raised-interface! cyan:rounded-l-medium!;
+}*/
 
 [class*="GuildsLayout.module__guildIcon_"],
 [class*="GuildsLayout.module__addGuildButtonIcon_"] {
     @apply cyan:shadow-cyan! cyan:bg-second-layer! cyan:use-blur! cyan:rounded-full! cyan:border-0!;
 }
 
-[class*="GuildsLayout.module__guildIndicatorBar_"] {
+[class*="GuildsLayout.module__guildIndicatorBar_"],
+[class*="GuildFolderItem.module__folderIndicatorBar_"] {
     @apply cyan:bg-first-layer!;
+}
+
+[class*="GuildFolderItem.module__collapsedFolderBackground_"] {
+    @apply cyan:use-blur! cyan:shadow-cyan!;
+}
+
+.theme-light [class*="Modal.module__root_"] * {
+    --text-primary: hsl(220, calc(13% * var(--saturation-factor)), 96%);
+    --text-primary-muted: hsl(
+        220,
+        calc(13% * var(--saturation-factor)),
+        78.18%
+    );
+    --text-tertiary: hsl(220, calc(13% * var(--saturation-factor)), 64.71%);
+    --text-tertiary-secondary: hsl(
+        220,
+        calc(13% * var(--saturation-factor)),
+        52%
+    );
+    --text-tertiary-muted: hsl(
+        220,
+        calc(13% * var(--saturation-factor)),
+        55.52%
+    );
+    --text-secondary: hsl(220, calc(13% * var(--saturation-factor)), 89.1%);
+    --surface-interactive-selected-color: var(--text-primary);
+    --text-chat: hsl(220, calc(13% * var(--saturation-factor)), 93.15%);
+    --text-chat-muted: hsl(220, calc(13% * var(--saturation-factor)), 78.18%);
+}
+
+[class*="Button.module__secondary_"] {
+    @apply cyan:btn! cyan:rounded-medium!;
+    color: var(--text-primary) !important;
+}
+
+[class*="Button.module__primary_"] {
+    @apply cyan:btn! cyan:rounded-medium! cyan:bg-accent-500! cyan:border-accent-460!;
+}
+
+[class*="Button.module__dangerSecondary_"] {
+    @apply cyan:btn! cyan:rounded-medium! cyan:bg-red-500! cyan:border-red-400!;
+    color: var(--text-primary) !important;
+}
+
+[class*="Button.module__dangerSecondary_"]:hover {
+    @apply cyan:bg-red-600! cyan:border-red-500!;
+}
+
+[class*="Button.module__primary_"]:hover {
+    @apply cyan:bg-accent-600! cyan:border-accent-560!;
+}
+
+[class*="ColorPickerField.module__swatchButton_"] {
+    @apply cyan:btn! cyan:rounded-medium! cyan:m-1! cyan:w-10.5! cyan:h-10.5!;
+}
+
+[class*="ColorPickerField.module__inputWrapper_"] {
+    height: 52px !important;
+}
+
+[class*="ColorPickerField.module__swatchButton_"]
+    [class*="ColorPickerField.module__swatchIcon_"] {
+    @apply cyan:text-white!;
+}
+
+[class*="ColorPickerField.module__divider_"],
+[class*="AppearanceTab.module__previewOverlay_"] {
+    @apply cyan:hidden!;
+}
+
+[class*="AppearanceTab.module__previewContainer_"] {
+    @apply cyan:raised-interface! cyan:rounded-interface!;
+}
+
+[class*="SettingsModalLayout.module__closeButton_"] {
+    @apply cyan:invis-btn! cyan:rounded-medium!;
+}
+
+[class*="SettingsModalLayout.module__desktopHeader_"] {
+    @apply cyan:no-bg! cyan:border-0! cyan:h-14! cyan:pl-2! cyan:pr-2!;
+}
+
+[class*="Accordion.module__header_"] {
+    @apply cyan:invis-btn! cyan:px-4! cyan:py-2! cyan:rounded-medium! cyan:-mx-2;
+}
+
+[class*="Message.module__message_"] {
+    @apply cyan:-mx-2! cyan:rounded-medium! cyan:use-transition!;
+}
+
+[class*="Message.module__message_"]:hover {
+    @apply cyan:bg-second-layer-thin! cyan:shadow-glass!;
+}
+
+[class*="Message.module__message_"]:not(
+    :has(> div > [class*="Message.module__messageSending_"])
+) {
+    @apply cyan:animate-enter-rtl!;
+}
+
+[class*="MessageActionBar.module__actionBar_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium! cyan:use-transition! cyan:use-blur!;
+}
+
+[class*="Messages.module__newMessagesBar_"] {
+    @apply cyan:pb-0! cyan:bottom-1.5! cyan:rounded-small! cyan:btn! cyan:use-blur!;
+}
+
+[class*="UserArea.module__controlButton_"][class*="UserArea.module__active_"] {
+    background-color: color-mix(
+        in srgb,
+        var(--control-button-danger-text) 20%,
+        transparent
+    ) !important;
+    color: var(--control-button-danger-text) !important;
+}
+
+[class*="UserArea.module__controlButton_"][class*="UserArea.module__active_"]:hover {
+    background-color: color-mix(
+        in srgb,
+        var(--control-button-danger-text) 30%,
+        transparent
+    ) !important;
+    color: var(--control-button-danger-text) !important;
+}
+
+[class*="SettingsModalLayout.module__desktopSidebarInner_"] {
+    @apply cyan:p-1!;
+}
+
+[class*="SettingsModalLayout.module__sidebarHeader_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium! cyan:mb-2! cyan:flex! cyan:flex-col-reverse!;
+}
+
+[class*="DesktopSettingsView.module__searchContainer_"],
+[class*="UserSettingsModal.module__userProfile_"] {
+    @apply cyan:mb-0!;
+}
+
+[class*="DesktopSettingsView.module__searchContainer_"]
+    [class*="Input.module__input_"] {
+    @apply cyan:border-0! cyan:no-bg! cyan:shadow-none!;
+}
+
+[class*="UserSettingsModal.module__userProfile_"] {
+    @apply cyan:p-2!;
+}
+
+[class*="SettingsModalLayout.module__sidebarItem_"],
+[class*="ChannelItem.module__channelItemRegular_"] {
+    @apply cyan:border cyan:border-transparent cyan:use-transition!;
+}
+
+[class*="SettingsModalLayout.module__sidebarItem_"]:hover,
+[class*="ChannelItem.module__channelItemRegular_"]:hover {
+    @apply cyan:shadow-glass!;
+}
+
+[class*="SettingsModalLayout.module__sidebarSubItemActive_"],
+[class*="SettingsModalLayout.module__sidebarItemSelected_"],
+[class*="ChannelItemSurface.module__channelItemSurfaceSelected_"] {
+    @apply cyan:raised-interface!;
+}
+
+[class*="DevicesTab.module__authSession_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium!;
+}
+
+[class*="DevicesTab.module__iconContainer_"] {
+    background: none;
+    color: var(--text-primary);
+    width: 24px;
+    height: 24px;
+}
+
+[class*="Message.module__message_"]::before,
+[class*="Message.module__messageCompact_"]::before {
+    width: 3px !important;
+    left: -1.5px !important;
+    @apply cyan:rounded-small! cyan:h-3/4! cyan:top-1/8!;
+}
+
+[class*="EmbedCard.module__wrapper_"] {
+    @apply cyan:raised-interface! cyan:rounded-large!;
+}
+
+[class*="EmbedCard.module__divider_"] {
+    @apply cyan:border-t-0! cyan:p-2!;
+}
+
+[class*="ThemeEmbed.module__iconCircle_"] {
+    @apply cyan:raised-interface!;
+}
+
+[class*="ContextMenu.module__contextMenu_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium! cyan:use-blur! cyan:shadow-cyan!;
+}
+
+[class*="MenuItem.module__menuItem_"] {
+    @apply cyan:invis-btn! cyan:rounded-medium!;
+}
+
+[class*="MessageReactionsContent.module__reactionListPanel_"] {
+    @apply cyan:raised-interface! cyan:rounded-large!;
+}
+
+[class*="Modal.module__header_"] {
+    @apply cyan:p-2! cyan:pl-4!;
+}
+
+[class*="Modal.module__header_"] button[class=""] {
+    @apply cyan:invis-btn! cyan:rounded-medium! cyan:w-10! cyan:h-10!;
+}
+
+[class*="Tooltip.module__tooltip_"] {
+    @apply cyan:raised-interface! cyan:rounded-medium! cyan:use-blur! cyan:shadow-cyan!;
+}
+
+html.platform-native:not(.platform-macos)
+    [class*="SplashScreen.module__splashOverlay_"] {
+    @apply cyan:top-0!;
+}
+
+/*[class*="SplashScreen.module__splashOverlay_"]:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 17em;
+    background-color: var(--cyan-accent-color);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='editorial' viewBox='0 24 150 28' preserveAspectRatio='none'%3E%3Cstyle%3E @keyframes animate-forever %7B 0%25 %7B height: 1em; opacity: 0; %7D 100%25 %7B height: 2em; opacity: 1; %7D %7D .editorial %7B display: block; width: 100%25; height: 17em; margin: 0; %7D body %7B display: flex; align-items: end; justify-content: end; margin: 0; %7D rect %7B width: 100%25; height: 1em; animation: animate-forever 3s ease-out alternate-reverse infinite; %7D %3C/style%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' x2='0%25' y1='0%25' y2='100%25'%3E%3Cstop offset='20%25' stop-color='rgba(0,0,0,1)' /%3E%3Cstop offset='100%25' stop-color='rgba(0,0,0,0)' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad1)'%3E%3C/rect%3E%3C/svg%3E");
+    -webkit-mask-size: 100%;
+    -webkit-mask-position: 50%;
+    -webkit-mask-repeat: no-repeat;
+    rotate: 180deg;
+}*/
+
+[class*="SplashScreen.module__splashOverlay_"] {
+    @apply cyan:bg-second-layer! cyan:use-blur!;
+}
+
+[class*="SplashScreen.module__quoteContainer_"] {
+    position: absolute;
+    top: 57px;
+    left: 35px;
+    justify-content: start;
+    width: fit-content;
+    flex-direction: column;
+    align-items: start;
+    padding: 0;
+}
+
+[class*="SplashScreen.module__quoteContainer_"]:after {
+    counter-reset: cyan-version var(--cyan-version) cyan-subversion
+        var(--cyan-subversion) cyan-patch-version var(--cyan-patch-version);
+    content: "Cyan v" counter(cyan-version) "." counter(cyan-subversion) "."
+        counter(cyan-patch-version) " is loading...";
+    color: var(--header-primary);
+    font-size: 22px;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+[class*="SplashScreen.module__splashContent_"] {
+    @apply cyan:contents!;
+}
+
+[class*="SplashScreen.module__iconWrapper_"] {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    scale: 0.5;
+}
+
+[class*="SplashScreen.module__connectionStatus_"] {
+    @apply cyan:hidden!;
 }
